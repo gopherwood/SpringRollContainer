@@ -1,6 +1,6 @@
 {
 	"name": "springroll-container",
-	"version": "0.5.3",
+	"version": "0.5.4-gw",
 	"main": "dist/container.min.js",
 	"dependencies":
 	{

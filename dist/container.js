@@ -1,4 +1,4 @@
-/*! SpringRoll Container 0.5.3 */
+/*! SpringRoll Container 0.5.4-gw */
 /**
  * @module Core
  * @namespace window
@@ -1386,9 +1386,9 @@
 	 * @property {String} version
 	 * @static
 	 * @readOnly
-	 * @default "0.5.3"
+	 * @default "0.5.4-gw"
 	 */
-	Container.version = "0.5.3";
+	Container.version = "0.5.4-gw";
 
 	//Reference to the prototype
 	var s = EventDispatcher.prototype;
@@ -2118,6 +2118,7 @@
 		 * @param {Boolean} data.sfx If SFX context is supported
 		 * @param {Boolean} data.captions If captions is supported
 		 * @param {Boolean} data.hints If hinting is supported
+		 * @param {Boolean} data.disablePause If pause is disabled for debugging
 		 */
 		this.trigger('features', event.data);
 	};
@@ -2698,7 +2699,7 @@
 						this._internalOpen(release.url + options.query, options);
 					}
 					.bind(this))
-				.fail(function()
+				.fail(function(err)
 					{
 						if (this._destroyed) return;
 
@@ -2706,7 +2707,7 @@
 						 * Fired when the API cannot be called
 						 * @event remoteFailed
 						 */
-						return this.trigger('remoteFailed');
+						return this.trigger('remoteFailed', err);
 					}
 					.bind(this));
 		};
